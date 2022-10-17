@@ -13,6 +13,8 @@ export class UserController {
 
         const { name, email, login, password, address, phone, role} = request.body
 
+        
+
         const result = await prismaClient.user.create({
             data: {
                 name,
@@ -25,12 +27,18 @@ export class UserController {
             }
         })
 
+        console.log("Usuário cadastrado com sucesso");
+
         return response.status(201).json(result);
   }
 
 
   async loginUser(request :Request, response :Response){
-      
       response.send("Login ainda implementado...");
+  }
+
+  async allUser(request :Request, response: Response){
+       const listUsers = await prismaClient.user.findMany();
+       response.json( listUsers );
   }
 }
