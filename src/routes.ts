@@ -1,10 +1,18 @@
 import { Router } from 'express';
+import { UserController } from './controllers/User/UserController';
 
-import { CreateUserController } from './controllers/User/CreateUserController';
-
+const userControl = new UserController();
 const router = Router();
 
-router.post('/users', new CreateUserController().handle)
-router.post('/login', new CreateUserController().handle)
+
+router.post('/signup', userControl.createUser)
+router.post('/login', userControl.loginUser)
+
+router.get('/', (request, response)=>{
+    response.send("Server is running on port 3000");
+})
+
+router.get('/allUser', userControl.allUser);
+
 
 export { router }
