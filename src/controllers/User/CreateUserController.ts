@@ -19,12 +19,14 @@ export class CreateUserController {
       role
     } = request.body
 
+    const hash_password = await hash(password, 8)
+
     const result = await prismaClient.user.create({
       data: {
         name,
         email,
         login,
-        password,
+        password: hash_password,
         address,
         //  role
       }
