@@ -8,28 +8,29 @@ import { prismaClient } from '../../database/prismaClient';
  * Body: usado paa enviar várias infos numa requisição, corpo da requisição;
  */
 
-export class CreateUserController {
-  async handle(request: Request, response: Response) {
-    const {
-      name,
-      email,
-      login,
-      password,
-      address,
-      role
-    } = request.body
+export class UserController {
+      async createUser(request: Request, response: Response) {
 
-    const result = await prismaClient.user.create({
-      data: {
-        name,
-        email,
-        login,
-        password,
-        address,
-        //  role
-      }
-    })
+        const { name, email, login, password, address, phone, role} = request.body
 
-    return response.status(201).json(result);
+        const result = await prismaClient.user.create({
+            data: {
+                name,
+                email,
+                login,
+                password,
+                address,
+                phone
+                //  role
+            }
+        })
+
+        return response.status(201).json(result);
+  }
+
+
+  async loginUser(request :Request, response :Response){
+      
+      response.send("Login ainda implementado...");
   }
 }

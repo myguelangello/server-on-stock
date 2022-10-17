@@ -9,6 +9,7 @@ CREATE TABLE "users" (
     "login" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "address" TEXT,
+    "phone" TEXT NOT NULL,
     "role" "_Role" NOT NULL DEFAULT 'customer',
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
