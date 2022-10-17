@@ -1,9 +1,9 @@
-Equipe:
+# Equipe:
 
-Marcos patrick saraiva da silva - 496459
-Igor mourão das neves - 494749
-Myguel Angello maciel de abreu - 495849
-Reinaldo da silva nascimento - 499899
+Marcos patrick saraiva da silva - 496459 <Br />
+Igor mourão das neves - 494749 <Br />
+Myguel Angello maciel de abreu - 495849 <Br />
+Reinaldo da silva nascimento - 499899 <Br />
 
 
 Front: 
@@ -16,7 +16,10 @@ https://github.com/MarcosPatrickExe/server-on-stock.git
 
 
 
-
+<Br />
+<Br />
+<Br />
+<Br />
 
 
 Entidade User
