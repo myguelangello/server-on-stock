@@ -15,6 +15,7 @@ model User {
   login    String
   password String
   address  String?
+  phone    String
   role     Role    @default(CUSTOMER)
 
   avaluated Evaluations[]
