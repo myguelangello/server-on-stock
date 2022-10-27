@@ -9,11 +9,11 @@ import { prismaClient } from '../../database/prismaClient';
  */
 
 export class UserController {
-      async createUser(request: Request, response: Response) {
+    async createUser(request: Request, response: Response) {
 
-        const { name, email, login, password, address, phone, role} = request.body
+        const { name, email, login, password, address, phone, role } = request.body
 
-        
+
 
         const result = await prismaClient.user.create({
             data: {
@@ -22,7 +22,7 @@ export class UserController {
                 login,
                 password,
                 address,
-                phone
+                //phone
                 //  role
             }
         })
@@ -30,15 +30,15 @@ export class UserController {
         console.log("Usuário cadastrado com sucesso");
 
         return response.status(201).json(result);
-  }
+    }
 
 
-  async loginUser(request :Request, response :Response){
-      response.send("Login ainda implementado...");
-  }
+    async loginUser(request: Request, response: Response) {
+        response.send("Login ainda implementado...");
+    }
 
-  async allUser(request :Request, response: Response){
-       const listUsers = await prismaClient.user.findMany();
-       response.json( listUsers );
-  }
+    async allUser(request: Request, response: Response) {
+        const listUsers = await prismaClient.user.findMany();
+        response.json(listUsers);
+    }
 }
