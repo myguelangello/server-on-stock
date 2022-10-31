@@ -15,18 +15,16 @@ export class AuthController {
     })
 
     if (!user) {
-      return response.json({ failed: "Incorrect email or passwords" })
+      return response.json({ failed: "Email ou senha incorretos." })
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      return response.json({ failed: "Ops... invalid password, try again." })
+      return response.json({ failed: "Email ou senha incorretos." })
     }
 
     const token = generateToken({ id: user.id })
-
-    console.log(`token: ${token}`)
 
     return response.json(token);
   }

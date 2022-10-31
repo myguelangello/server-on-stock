@@ -8,6 +8,18 @@ import { prismaClient } from '../../database/prismaClient';
  * Body: usado paa enviar várias infos numa requisição, corpo da requisição;
  */
 
+interface UserResquest {
+  id: string;
+  name: string;
+  email: string;
+  login: string;
+  password: string;
+  address: string | '';
+  role: 'CUSTOMER' | 'ADMIN';
+  phone: string;
+}
+
+
 export class CreateUserController {
   async handle(request: Request, response: Response) {
     const {
@@ -16,8 +28,9 @@ export class CreateUserController {
       login,
       password,
       address,
-      role
-    } = request.body
+      role,
+      phone
+    } = request.body as UserResquest;
 
     const hash_password = await hash(password, 8)
 
@@ -28,10 +41,11 @@ export class CreateUserController {
         login,
         password: hash_password,
         address,
-        //  role
+        role,
+        phone
       }
     })
 
-    return response.status(201).json(result);
+    return response.status(201).json({ name, email, login, role });
   }
 }
